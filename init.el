@@ -51,3 +51,8 @@
     (beginning-of-line)))
 
 (global-set-key (kbd "C-a") 'better-beginning-of-line)
+
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-beginnings-of-lines)
+(global-set-key (kbd "<M-f3>") 'mc/mark-all-like-this)
