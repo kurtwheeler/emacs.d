@@ -75,6 +75,7 @@
 (global-set-key (kbd "C-o") 'avy-goto-word-or-subword-1)
 (global-set-key (kbd "C-<insert>") 'yank)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
+(global-set-key (kbd "M-T") 'transpose-sexps)
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
