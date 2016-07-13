@@ -79,6 +79,7 @@
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-_"))
 
 (global-linum-mode 1)
 
