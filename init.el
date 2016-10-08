@@ -55,8 +55,12 @@
 (defun open-bracket ()
   (interactive)
   (insert "{")
+  (newline)
+  (newline)
   (insert "}")
-  (backward-char))
+  (c-indent-line-or-region)
+  (previous-line)
+  (c-indent-line-or-region))
 
 (defun open-paren ()
   (interactive)
