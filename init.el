@@ -58,14 +58,21 @@
   (insert "}")
   (backward-char))
 
+(defun open-paren ()
+  (interactive)
+  (insert "(")
+  (insert ")")
+  (backward-char))
+
 (define-minor-mode my-c-mode
   "Get your foos in the right places."
   :lighter " My-C"
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "{") 'open-bracket)
+            (define-key map (kbd "(") 'open-paren)
             map))
 
-(add-hook 'c-mode 'my-c-mode)
+(add-hook 'c-mode-hook 'my-c-mode)
 
 
 ;; PHP
