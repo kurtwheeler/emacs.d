@@ -16,6 +16,9 @@
 
 ;; My changes:
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(require 'paredit)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 
 (defun add-midje-forms-to-clojure-dedenting ()
@@ -46,6 +49,26 @@
 
 (add-hook 'paredit-mode-hook 'unbind-movement)
 
+;; C
+(setq-default c-basic-offset 4)
+
+(defun open-bracket ()
+  (interactive)
+  (insert "{")
+  (insert "}")
+  (backward-char))
+
+(define-minor-mode my-c-mode
+  "Get your foos in the right places."
+  :lighter " My-C"
+  :keymap (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "{") 'open-bracket)
+            map))
+
+(add-hook 'c-mode 'my-c-mode)
+
+
+;; PHP
 (defun php-tabs ()
   (setq indent-tabs-mode t)
   (setq tab-width 4))
@@ -85,11 +108,13 @@
 
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 
+(require 'anzu)
 (global-anzu-mode 1)
 
 (add-hook 'cider-repl-mode-hook
           (local-set-key (kbd "M-p") 'ace-window))
 
+(require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Overwrite go to beginning of line:
