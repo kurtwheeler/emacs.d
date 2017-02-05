@@ -14,7 +14,19 @@
   (when (not (package-installed-p 'better-defaults))
     (package-install 'better-defaults)))
 
+(defvar myPackages
+  '(elpy
+    py-autopep8
+    ein))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      myPackages)
+
 ;; My changes:
+
+(setq next-screen-context-lines 10)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -49,8 +61,19 @@
 
 (add-hook 'paredit-mode-hook 'unbind-movement)
 
+;; Python
+
+(elpy-enable)
+
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+(elpy-use-ipython)
+(setq python-shell-interpreter "ipython2" python-shell-interpreter-args "--simple-prompt --pprint")
+
 ;; C
 (setq-default c-basic-offset 4)
+(c-set-offset 'case-label '+)
 
 (defun open-bracket ()
   (interactive)
@@ -62,18 +85,11 @@
   (previous-line)
   (c-indent-line-or-region))
 
-(defun open-paren ()
-  (interactive)
-  (insert "(")
-  (insert ")")
-  (backward-char))
-
 (define-minor-mode my-c-mode
   "Get your foos in the right places."
   :lighter " My-C"
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "{") 'open-bracket)
-            (define-key map (kbd "(") 'open-paren)
             map))
 
 (add-hook 'c-mode-hook 'my-c-mode)
