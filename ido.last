@@ -2,12 +2,15 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/home/kurt/" . ".emacs.d/")
- ("/home/kurt/Development/" . "emacs.d/")
+ ("/home/kurt/" . "Downloads/")
+ ("/home/kurt/Development/" . "celery-sandbox/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/kurt/Development/celery-sandbox/"
+ "/home/kurt/Downloads/"
+ "/home/kurt/Development/"
  "/home/kurt/Development/emacs.d/"
  "/home/kurt/Development/python_practice/"
  "/home/kurt/.emacs.d/"
@@ -17,6 +20,9 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "test_task.py"
+ "hidetext.pcl"
+ "temp.txt"
  "init.el"
  "scipy_practice.py"
  "#scipy_practice.py#"
@@ -24,26 +30,27 @@
  "notes"
  "hash_set.py"
  "linked_list.py"
- "quicksort_test.py"
- "quicksort.py"
- "linked_list_tesy.py"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/kurt/Development/emacs.d/" (22675 61393 423791 362000) ".git/" "auto-save-list/" "./" "snippets/" "elpa/" ".gitignore" "ido.last" "../" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" "places" "init.el" "backups/")
+ ("/home/kurt/Downloads/" (22713 56050 304474 194000) "../" "slack-desktop-2.5.1-amd64.deb" "Data Refinery System Design (1).png" "Data Refinery System Design.png" "./")
+
+ ("/home/kurt/Development/celery-sandbox/" (22717 36892 684929 183000) "../" "./")
+
+ ("/home/kurt/Development/" (22717 36892 684929 183000) "emacs.d/" "../" "celery-sandbox/" "./")
+
+ ("/home/kurt/" (22710 64645 921513 450000) "Development/" ".bashrc" ".gnupg/" ".gnome/" ".cache/" ".profile" ".dropbox-dist/" "../" ".sudo_as_admin_successful" "Documents/" ".mozilla/" ".xsession-errors.old" "Templates/" ".gconf/" "Public/" ".compiz/" ".bash_logout" "Videos/" ".emacs.d/" "Downloads/" "Music/" ".local/" ".pki/" "Pictures/" ".ICEauthority" "./" ".Xauthority" "examples.desktop" ".dmrc" ".bash_history" ".dropbox/" ".xsession-errors" "Desktop/" ".ssh/" ".config/")
+
+ ("/home/kurt/.emacs.d/" (22710 64735 323174 640000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" "ido.last" "elpa/" "./" "auto-save-list/")
+
+ ("/home/kurt/Development/emacs.d/" (22710 64735 323174 640000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" "ido.last" "elpa/" "./" "auto-save-list/")
 
  ("/home/kurt/Development/python_practice/" (22675 58608 487150 565000) "linked_list.pyc" "#python_challenge.py#" "quicksort.py" "#hash_set;#" "./" "scipy_practice.py" "linked_list.py" "notes" "#scipy_practice.py#" "quicksort_test.py" "hash_set.pyc" "hash_set_test.py" "../" "linked_list_tesy.py" ".#scipy_practice.py" "python_challenge.py" "channel.zip" "quicksort.pyc" ".#python_challenge.py" "hash_set.py")
-
- ("/home/kurt/" (22675 21879 219780 382000) "Public/" ".Xdefaults" ".xsession-errors.old" ".sudo_as_admin_successful" ".bash_history" ".gconf/" "Videos/" ".m2/" "./" ".ssh/" ".local/" ".lein/" ".dmrc" ".bashrc" ".ICEauthority" ".config/" ".pki/" ".profile" ".lesshst" ".xsession-errors" ".gnome2/" ".Xauthority" ".wget-hsts" "Templates/" "Development/" "Music/" "../" ".xinputrc" "Desktop/" ".cache/" ".bash_logout" "f.lux-indicator-applet/" "bin/" ".gnupg/" ".gnome/" ".purple/" ".thumbnails/" "Pictures/" ".ipython/" ".gitconfig" ".xscreensaver" "Documents/" ".emacs.d/" "Downloads/" ".mozilla/")
-
- ("/home/kurt/.emacs.d/" (22675 22461 93937 732000) ".git/" "auto-save-list/" "./" ".#init.el" "#init.el#" "snippets/" "elpa/" ".gitignore" "ido.last" "../" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" "places" "init.el" "backups/")
 
  ("/home/kurt/.emacs.d/elpa/elpy-1.14.1/" (22675 20999 828247 851000) "elpy-refactor.elc" "./" "NEWS.rst" "snippets/" "elpy.el" "elpy-django.elc" "elpy.elc" "../" "elpy-pkg.el" "elpy-autoloads.el" "elpy-django.el" "elpy-refactor.el" "elpy/")
 
  ("/home/kurt/Development/clocure/" (22546 26927 111658 810000) "listNode.h" ".git/" "value.c" "xclip" "./" "makefile" "reader.h" "LICENSE" "notes" ".gitignore" "token.h" "main.c" "../" "repl.h" "out.temp" "value.h" "README.md" "repl.c" "Exception.h" "clocure" "reader.c" "stackTraceItem.h")
-
- ("/home/kurt/Development/" (22674 5988 575367 964000) "./" "emacs.d/" "python_practice/" "sandbox/" "../" "clocure/")
 
  ("/home/kurt/Development/sandbox/" (22546 11140 408035 474000) "doc/" "src/" "./" "target/" "LICENSE" "test/" ".gitignore" "../" "README.md" "project.clj" ".hgignore" "CHANGELOG.md" "resources/")
 
