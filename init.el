@@ -71,6 +71,11 @@
 (elpy-use-ipython)
 (setq python-shell-interpreter "ipython2" python-shell-interpreter-args "--simple-prompt --pprint")
 
+(defun unbind-yas-snippet ()
+  (local-set-key (kbd "<tab>") 'indent-for-tab-command))
+
+(add-hook 'elpy-mode-hook 'unbind-yas-snippet)
+
 ;; C
 (setq-default c-basic-offset 4)
 (c-set-offset 'case-label '+)
