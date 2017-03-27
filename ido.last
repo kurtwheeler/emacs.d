@@ -2,10 +2,16 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/kurt/.emacs.d/" . "auto-save-list/")
+ ("/home/kurt/Development/cognoma/infrastructure/" . "task-definitions/")
+ ("/home/kurt/Development/cognoma/" . "infrastructure/")
+ ("/home/kurt/Development/terraform-sandbox/" . "security-groups/")
+ ("/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/" . "surveyor/")
+ ("/home/kurt/Development/data_refinery/foreman/" . "environments/")
  ("/home/kurt/Development/data_refinery/workers/" . "downloaders/")
  ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/" . "migrations/")
  ("/home/kurt/Development/data_refinery/data_models/" . "data_refinery_models/")
- ("/home/kurt/Development/data_refinery/" . "data_models/")
+ ("/home/kurt/Development/data_refinery/" . "workers/")
  ("/home/kurt/Development/bioinformatics_mill/foreman/bioinformatics_mill_foreman/surveyor/management/" . "commands/")
  ("/home/kurt/Development/bioinformatics_mill/foreman/bioinformatics_mill_foreman/surveyor/" . "management/")
  ("/home/kurt/Development/bioinformatics_mill/foreman/bioinformatics_mill_foreman/" . "surveyor/")
@@ -25,18 +31,28 @@
  ("/home/kurt/Development/prototyping/django_app/" . "migrations/")
  ("/home/kurt/Development/prototyping/" . "master/")
  ("/home/kurt/Development/emacs.d/" . "auto-save-list/")
- ("/home/kurt/" . "Development/")
- ("/home/kurt/Development/" . "emacs.d/")
+ ("/home/kurt/" . ".emacs.d/")
+ ("/home/kurt/Development/" . "cognoma/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/kurt/Development/data_refinery/"
- "/home/kurt/Development/data_refinery/data_models/data_refinery_models/migrations/"
+ "/home/kurt/.emacs.d/"
+ "/home/kurt/Development/cognoma/infrastructure/task-definitions/"
+ "/home/kurt/Development/cognoma/infrastructure/"
+ "/home/kurt/Development/terraform-sandbox/"
+ "/home/kurt/Development/terraform-sandbox/security-groups/"
+ "/home/kurt/"
  "/home/kurt/Development/data_refinery/data_models/data_refinery_models/"
- "/home/kurt/Development/data_refinery/data_models/"
+ "/home/kurt/Development/data_refinery/data_models/data_refinery_models/migrations/"
  "/home/kurt/Development/data_refinery/workers/downloaders/"
+ "/home/kurt/Development/data_refinery/data_models/"
+ "/home/kurt/Development/data_refinery/workers/environments/"
+ "/home/kurt/Development/data_refinery/data_models/environments/"
  "/home/kurt/Development/data_refinery/workers/data_refinery_workers/"
+ "/home/kurt/Development/data_refinery/foreman/environments/"
+ "/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/surveyor/"
+ "/home/kurt/Development/data_refinery/"
  "/home/kurt/Development/emacs.d/"
  "/home/kurt/Development/useful_commands/"
  "/home/kurt/Development/data_refinery/workers/"
@@ -51,7 +67,6 @@
  "/home/kurt/Development/bioinformatics_mill/foreman/environments/"
  "/home/kurt/Development/bioinformatics_mill/data_models/bioinformatics_mill_models/"
  "/home/kurt/Development/bioinformatics_mill/foreman/"
- "/home/kurt/.emacs.d/"
  "/home/kurt/Development/bioinformatics_mill/data_models/"
  "/home/kurt/Development/bioinformatics_mill/workers/"
  "/home/kurt/Development/bioinformatics_mill/workers/environments/"
@@ -60,7 +75,6 @@
  "/etc/postgresql/9.5/main/"
  "/etc/"
  "/home/kurt/Development/bioinformatics_mill/data_models/bioinformatics_mill_models.egg-info/"
- "/home/kurt/"
  "/home/kurt/Development/celery-sandbox/"
  "/home/kurt/Development/prototyping/django_test/django_app/"
  "/home/kurt/Development/emacs.d/elpa/multiple-cursors-1.3.0/"
@@ -76,45 +90,79 @@
 
 ;; ----- ido-work-file-list -----
 (
- "Dockerfile.worker"
- "0001_initial.py"
- "0002_auto_20170320_1443.py"
- "Dockerfile.tester"
- "Dockerfile.foreman"
- "models.py"
- "make_migrations.sh"
- "setup.py"
- "tasks.py"
- "__init__.py"
+ "init.el"
+ "core-service.json.key"
+ "nginx.json.key"
+ "temp.json"
+ "load-balancer.tf"
+ "public-elb-security-group.tf"
+ "nginx.json"
+ "core-service.json"
+ "copied.json"
+ "route53.tf"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/kurt/Development/data_refinery/" (22737 28589 950174 883000) "README.md" "foreman/" "terraform/" "data_models/" ".git/" ".gitignore" "../" "Dockerfile.worker" "dr_env/" "run_tester.sh" "workers/" "run_surveyor.sh" "Dockerfile.surveyor" "./" "run_worker.sh" "Dockerfile.tester" "install.sh" "LICENSE")
+ ("/home/kurt/.emacs.d/" (22745 21697 1086 789000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.104d6079c358a6d458148909304351142200000019710061" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" ".mc-lists.el" "ido.last" "elpa/" "session.104d6079c358a6d458148958579795446000000019710062" "./" "auto-save-list/" "backups/" "places")
 
- ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/migrations/" (22737 28464 133464 952000) "0001_initial.pyc" "../" "__init__.py" "0002_auto_20170320_1443.py" "__init__.pyc" "0001_initial.py" "./")
+ ("/home/kurt/.emacs.d/auto-save-list/" (22745 21299 847353 429000) ".saves-28104-moss-greenelab~" "../" "./")
 
- ("/home/kurt/Development/data_refinery/data_models/" (22737 28400 807121 469000) "README.md" "data_refinery_models/" "requirements.in" "data_refinery_models.egg-info/" "../" "environments/" "make_migrations.sh" "setup.py" "./" "install.sh" "manage.py" "dist/")
+ ("/home/kurt/Development/cognoma/infrastructure/task-definitions/" (22745 21299 847353 429000) "#core-service.json.key#" "../" "nginx.json.key" "core-service.json.key" "./")
 
- ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/" (22737 27923 523625 295000) "migrations/" "models.pyc" "../" "urls.pyc" "__init__.py" "wsgi.py" "urls.py" "__init__.pyc" "models.py" "settings.pyc" "settings.py" "./")
+ ("/home/kurt/Development/cognoma/infrastructure/" (22745 21298 15400 692000) "README.md" "load-balancer.tf" "terraform.tfstate" ".git/" "../" ".gitattributes" "LICENSE.md" ".git-crypt/" "terraform.tfstate.backup" "container-registry.tf" "public-elb-security-group.tf" "route53.tf" "./" "task-definitions/" "main.tf" "db-security-group.tf" "service-security-group.tf")
 
- ("/home/kurt/Development/data_refinery/workers/downloaders/" (22737 27744 252335 655000) "tasks.pyc" "../" "__init__.py" "tasks.py" "__init__.pyc" "./")
+ ("/home/kurt/Development/cognoma/core-service/" (22745 20469 620707 474000) "README.md" ".git/" ".gitignore" "../" ".github/" "dev_private_key.pem" "cognoma_site/" "requirements.txt" "docker-compose.yml" "LICENSE.md" "CONTRIBUTING.md" "api/" "Dockerfile" "circle.yml" "doc/" "./" "config/" "manage.py" "scripts/")
 
- ("/home/kurt/Development/data_refinery/workers/" (22737 27694 369648 389000) "master.py" "requirements.in" "../" "environments/" "requirements.txt" "data_refinery_workers/" "./" "manage.py" "downloaders/")
+ ("/home/kurt/" (22745 20762 825139 630000) ".terraform.d/" "Development/" ".lesshst" ".npm/" ".bashrc" ".gnupg/" ".gnome/" ".cache/" ".profile" ".dropbox-dist/" ".minikube/" "../" ".sudo_as_admin_successful" ".vim/" "Documents/" ".viminfo" ".mozilla/" ".kube/" ".xsession-errors.old" "Templates/" ".pypirc" ".psql_history" ".docker/" ".gconf/" ".ipython/" "Public/" ".compiz/" ".bash_logout" "Videos/" ".virtualenvs/" ".gitconfig" ".emacs.d/" "Downloads/" "Music/" ".local/" ".pki/" "Pictures/" ".ICEauthority" "./" ".Xauthority" "examples.desktop" ".nano/" ".python_history" ".dmrc" ".bash_history" ".dbus/" ".dropbox/" ".xsession-errors" "Desktop/" ".ssh/" ".config/")
 
- ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/" (22737 27694 369648 389000) "../" "__init__.py" "wsgi.py" "urls.py" "task_runner.py" "settings.py" "./")
+ ("/home/kurt/Development/cognoma/" (22745 20469 292716 17000) "terraform.tfstate" "../" "frontend/" "core-service/" "infrastructure/" "./")
 
- ("/home/kurt/Development/emacs.d/" (22737 25523 154177 164000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.104d6079c358a6d458148909304351142200000019710061" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" ".mc-lists.el" "ido.last" "elpa/" "session.104d6079c358a6d458148958579795446000000019710062" "./" "auto-save-list/" "backups/" "places")
+ ("/home/kurt/Downloads/" (22745 10315 841694 449000) "terraform.tfstate" "../" "slack-desktop-2.5.1-amd64.deb" "Data Refinery System Design (1).png" "virtualbox-5.1_5.1.14-112924-Ubuntu-xenial_amd64.deb" "Data Refinery System Design.png" "ipfs-p2p-file-system.pdf" "node-v6.10.0-linux-x64.tar.xz" "./" "terraform_0.9.1_linux_amd64.zip")
 
- ("/home/kurt/.emacs.d/" (22737 25523 154177 164000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.104d6079c358a6d458148909304351142200000019710061" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" ".mc-lists.el" "ido.last" "elpa/" "session.104d6079c358a6d458148958579795446000000019710062" "./" "auto-save-list/" "backups/" "places")
+ ("/etc/" (22741 9390 97673 225000) "gconf/" "wodim.conf" "gimp/" "insserv.conf.d/" "machine-id" "texmf/" "login.defs" "bindresvport.blacklist" "hp/" "gssapi_mech.conf" "speech-dispatcher/" "services" "ld.so.cache" "usb_modeswitch.d/" "security/" "dconf/" "opt/" "gtk-2.0/" "ufw/" "printcap" "debconf.conf" "legal" "timidity/" "lintianrc" "dictionaries-common/" "gtk-3.0/" "initramfs-tools/" "os-release" "ssl/" "rc5.d/" "rc2.d/" "modules" "group" "update-notifier/" "cron.monthly/" "adduser.conf" "binfmt.d/" "java-6-sun/" "gnome-app-install/" "mtab.fuselock" "libao.conf" "shells" "rabbitmq/" "apport/" "sysstat/" "logcheck/" "ca-certificates.conf" "rsyslog.d/" "ifplugd/" "wpa_supplicant/" "hosts.deny" "freeipmi/" "manpath.config" "fstab" "ca-certificates.conf.dpkg-old" "modprobe.d/" "passwd" "cracklib/" "guest-session/" "polkit-1/" "logrotate.conf" "init/" "dkms/" "postgresql/" "cron.d/" "gnome-vfs-2.0/" "rc1.d/" "newt/" "cron.weekly/" "R/" "cupshelpers/" "passwd-" "update-manager/" "sysctl.conf" "terminfo/" "aptdaemon/" "sgml/" "bash.bashrc" "ConsoleKit/" "gss/" "purple/" "ca-certificates/" "java-8-openjdk/" "drirc" "host.conf" "mysql/" "gshadow-" "bash_completion" "gmrunrc" "rc3.d/" "lsb-release" "wildmidi/" "ld.so.conf.d/" "pam.d/" "depmod.d/" "netscsid.conf" "gshadow" "sensors3.conf" "cron.hourly/" "bonobo-activation/" "ImageMagick-6/" "mailcap" "odbc.ini" "rc.local" "libreoffice/" "apt/" "group-" "selinux/" "updatedb.conf" "usb_modeswitch.conf" "kbd/" "calendar/" "ghostscript/" "hostname" "hosts.allow" "cups/" "subuid-" "python3.4/" "rmt" "profile.d/" "ssh/" "mailcap.order" "rcS.d/" "at-spi2/" "X11/" "mongod.conf" "zsh_command_not_found" "xdg/" "cron.daily/" "appstream.conf" "sensors.d/" "hdparm.conf" "ts.conf" "apm/" "fonts/" "inputrc" "whoopsie" "iproute2/" "update-motd.d/" "rpc" "kernel-img.conf" "pm/" "gdb/" ".pwd.lock" "libaudit.conf" "hosts" "papersize" "avahi/" "dnsmasq.d/" "shadow" "protocols" "sudoers.d/" "chatscripts/" "mime.types" "resolvconf/" "compizconfig/" "insserv/" "network/" "apg.conf" "emacs/" "upstart-xsessions" "grub.d/" "slurm-llnl/" "bash_completion.d/" "xml/" "pcmcia/" "crontab" "sane.d/" "wgetrc" "environment" "sysctl.d/" "nsswitch.conf" "rc4.d/" "groff/" "thermald/" "debian_version" "gai.conf" "acpi/" "magic" "subuid" "default/" "python3/" "rsyslog.conf" "libnl-3/" "icedtea-web/" "firefox/" "sudoers" "deluser.conf" "vdpau_wrapper.cfg" "dhcp/" "magic.mime" "NetworkManager/" "issue.net" "console-setup/" "munge/" "brltty.conf" "apache2/" "samba/" "kerneloops.conf" "shadow-" "udisks2/" "systemd/" "kernel/" "timezone" "ltrace.conf" "mono/" "ppp/" "mtab" "locale.alias" "locale.gen" "dbus-1/" "java-7-openjdk/" "lightdm/" "emacs24/" "fuse.conf" "issue" "apparmor.d/" "insserv.conf" "ucf.conf" "brlapi.key" "sound/" "mercurial/" "skel/" "python2.7/" "gnome/" "apparmor/" "ldap/" "subgid-" "perl/" "tmpfiles.d/" "securetty" "postgresql-common/" "xul-ext/" "popularity-contest.conf" "ld.so.conf" "signond.conf" "vim/" "dpkg/" "openal/" "resolv.conf" "python3.5/" "ImageMagick/" "logrotate.d/" "anacrontab" "fwupd.conf" "pam.conf" "modules-load.d/" "thunderbird/" "obex-data-server/" "alternatives/" "odbcinst.ini" "signon-ui/" "profile" "pulse/" "python/" "localtime" "mke2fs.conf" "mtools.conf" "brltty/" ".java/" "pki/" "vtrgb" "bluetooth/" "nanorc" "udev/" "init.d/" "doc-base/" "docker/" "UPower/" "ODBCDataSources/" "rc6.d/" "libpaper.d/" "rc0.d/" "networks" "matplotlibrc" "subgid" "pnm2ppa.conf" "lighttpd/" "../" "./")
+
+ ("/home/kurt/Development/data_refinery/workers/" (22741 26922 169861 608000) "master.py" "requirements.in" "../" "environments/" "requirements.txt" "data_refinery_workers/" "./" "manage.py" "downloaders/")
+
+ ("/home/kurt/Development/emacs.d/" (22740 4095 196206 807000) "init.el" "snippets/" ".git/" ".gitignore" "../" "session.104d6079c358a6d458148909304351142200000019710061" "session.220e93d02-30eb-49c1-a19a-b87013bc9343" ".mc-lists.el" "ido.last" "elpa/" "session.104d6079c358a6d458148958579795446000000019710062" "./" "auto-save-list/" "backups/" "places")
+
+ ("/home/kurt/Development/data_refinery/" (22741 27639 459051 532000) "README.md" "foreman/" "terraform/" "data_models/" "requirements.in" ".git/" ".gitignore" "../" "Dockerfile.worker" "dr_env/" "requirements.txt" "run_tester.sh" "workers/" "run_surveyor.sh" "Dockerfile.surveyor" "./" "run_worker.sh" "Dockerfile.tester" "install.sh" "LICENSE")
+
+ ("/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/surveyor/" (22741 31010 247377 545000) "../" "__init__.py" "array_express_surveyor.py" "external_source.py" "./" "surveyor.py" "management/")
+
+ ("/home/kurt/Development/data_refinery/foreman/environments/" (22741 26927 25733 537000) "../" "dev" "./" "test")
+
+ ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/" (22741 26922 169861 608000) "../" "__init__.py" "wsgi.py" "urls.py" "task_runner.py" "settings.py" "./")
+
+ ("/home/kurt/Development/data_refinery/data_models/environments/" (22741 26936 153492 837000) "../" "dev" "./" "test")
+
+ ("/home/kurt/Development/data_refinery/workers/environments/" (22741 26936 153492 837000) "../" "dev" "./" "test")
+
+ ("/home/kurt/Development/data_refinery/data_models/" (22741 30810 896657 618000) "README.md" "data_refinery_models/" "requirements.in" "data_refinery_models.egg-info/" "../" "environments/" "make_migrations.sh" "requirements.txt" "setup.py" "./" "install.sh" "manage.py" "dist/")
+
+ ("/home/kurt/Development/data_refinery/workers/downloaders/" (22741 26922 169861 608000) "tasks.pyc" "../" "__init__.py" "tasks.py" "__init__.pyc" "./")
+
+ ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/migrations/" (22741 30438 414340 522000) "0001_initial.pyc" "../" "__pycache__/" "__init__.py" "0002_surveyjob_success.py" "__init__.pyc" "0001_initial.py" "./")
+
+ ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/" (22741 30397 987391 261000) "migrations/" "models.pyc" "../" "urls.pyc" "__pycache__/" "__init__.py" "wsgi.py" "urls.py" "__init__.pyc" "models.py" "settings.pyc" "settings.py" "./")
+
+ ("/home/kurt/Development/terraform-sandbox/" (22741 13939 463341 761000) "../" "./")
+
+ ("/home/kurt/Development/" (22740 14588 358224 985000) "cognoma/" "emacs.d/" "../" "test.js" "celery-sandbox/" "celery/" "terraform-sandbox/" "data_refinery/" "./" "useful_commands/" "#test.js#" "prototyping/")
+
+ ("/home/kurt/Development/terraform-sandbox/security-groups/" (22739 61510 500743 813000) "../" "cognoma-service.tf" "./")
+
+ ("/home/kurt/.emacs.d/elpa/" (22738 59220 12597 459000) "s-1.11.0/" "ace-window-0.9.0/" "ace-window-readme.txt" "ivy-0.8.0/" "archives/" "../" "clojure-mode-5.2.0/" "cl-generic-0.3/" "avy-0.4.0/" "request-0.3.0/" "cl-generic-0.3.signed" "ein-0.12.1/" "pyvenv-1.9/" "clojure-mode-readme.txt" "better-defaults-0.1.3/" "gnupg/" "py-autopep8-2016.1/" "terraform-mode-0.6/" "multiple-cursors-1.3.0/" "yasnippet-0.11.0/" "company-0.9.2/" "websocket-1.6.signed" "find-file-in-project-5.2.7/" "dockerfile-mode-1.2/" "anzu-readme.txt" "highlight-indentation-0.7.0/" "websocket-1.6/" "paredit-24/" "./" "hcl-mode-0.3/" "elpy-1.14.1/" "anzu-0.62/" "rainbow-delimiters-2.1.3/")
+
+ ("/home/kurt/.emacs.d/elpa/terraform-mode-0.6/" (22738 59220 332589 27000) "../" "terraform-mode-autoloads.el" "terraform-mode-pkg.elc" "terraform-mode-pkg.el" "terraform-mode.elc" "./" "terraform-mode.el")
+
+ ("/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/" (22737 29579 836277 940000) "../" "__init__.py" "wsgi.py" "urls.py" "surveyor/" "settings.py" "./")
+
+ ("/home/kurt/Development/data_refinery/foreman/" (22737 29693 581289 168000) "requirements.in" "../" "environments/" "./" "manage.py" "data_refinery_foreman/")
+
+ ("/home/kurt/Development/data_refinery/foreman/bioinformatics_mill_foreman/" (22737 29510 630098 314000) "../" "__init__.py" "wsgi.py" "urls.py" "surveyor/" "settings.py" "./")
 
  ("/home/kurt/Development/useful_commands/" (22737 21467 228089 699000) "../" "cleanup_docker_images.sh" "./" "line_length.sh")
-
- ("/home/kurt/" (22737 17385 522879 220000) "Development/" ".lesshst" ".bashrc" ".gnupg/" ".gnome/" ".cache/" ".profile" ".dropbox-dist/" ".minikube/" "../" ".sudo_as_admin_successful" "Documents/" ".mozilla/" ".kube/" ".xsession-errors.old" "Templates/" ".pypirc" ".psql_history" ".gconf/" ".ipython/" "Public/" ".compiz/" ".bash_logout" "Videos/" ".virtualenvs/" ".gitconfig" ".emacs.d/" "Downloads/" "Music/" ".local/" ".pki/" "Pictures/" ".ICEauthority" "./" ".Xauthority" "examples.desktop" ".nano/" ".python_history" ".dmrc" ".bash_history" ".dbus/" ".dropbox/" ".xsession-errors" "Desktop/" ".ssh/" ".config/")
-
- ("/etc/" (22737 11957 980859 703000) "gconf/" "wodim.conf" "gimp/" "insserv.conf.d/" "machine-id" "texmf/" "login.defs" "bindresvport.blacklist" "hp/" "gssapi_mech.conf" "speech-dispatcher/" "services" "ld.so.cache" "usb_modeswitch.d/" "security/" "dconf/" "opt/" "gtk-2.0/" "ufw/" "printcap" "debconf.conf" "legal" "timidity/" "lintianrc" "dictionaries-common/" "gtk-3.0/" "initramfs-tools/" "os-release" "ssl/" "rc5.d/" "rc2.d/" "modules" "group" "update-notifier/" "cron.monthly/" "adduser.conf" "binfmt.d/" "java-6-sun/" "gnome-app-install/" "mtab.fuselock" "libao.conf" "shells" "rabbitmq/" "apport/" "sysstat/" "logcheck/" "ca-certificates.conf" "rsyslog.d/" "ifplugd/" "wpa_supplicant/" "hosts.deny" "freeipmi/" "manpath.config" "fstab" "ca-certificates.conf.dpkg-old" "modprobe.d/" "passwd" "cracklib/" "guest-session/" "polkit-1/" "logrotate.conf" "init/" "dkms/" "postgresql/" "cron.d/" "gnome-vfs-2.0/" "rc1.d/" "newt/" "cron.weekly/" "R/" "cupshelpers/" "passwd-" "update-manager/" "sysctl.conf" "terminfo/" "aptdaemon/" "sgml/" "bash.bashrc" "ConsoleKit/" "gss/" "purple/" "ca-certificates/" "java-8-openjdk/" "drirc" "host.conf" "mysql/" "gshadow-" "bash_completion" "gmrunrc" "rc3.d/" "lsb-release" "wildmidi/" "ld.so.conf.d/" "pam.d/" "depmod.d/" "netscsid.conf" "gshadow" "sensors3.conf" "cron.hourly/" "bonobo-activation/" "ImageMagick-6/" "mailcap" "odbc.ini" "rc.local" "libreoffice/" "apt/" "group-" "selinux/" "updatedb.conf" "usb_modeswitch.conf" "kbd/" "calendar/" "ghostscript/" "hostname" "hosts.allow" "cups/" "subuid-" "python3.4/" "rmt" "profile.d/" "ssh/" "mailcap.order" "rcS.d/" "at-spi2/" "X11/" "mongod.conf" "zsh_command_not_found" "xdg/" "cron.daily/" "appstream.conf" "sensors.d/" "hdparm.conf" "ts.conf" "apm/" "fonts/" "inputrc" "whoopsie" "iproute2/" "update-motd.d/" "rpc" "kernel-img.conf" "pm/" "gdb/" ".pwd.lock" "libaudit.conf" "hosts" "papersize" "avahi/" "dnsmasq.d/" "shadow" "protocols" "sudoers.d/" "chatscripts/" "mime.types" "resolvconf/" "compizconfig/" "insserv/" "network/" "apg.conf" "emacs/" "upstart-xsessions" "grub.d/" "slurm-llnl/" "bash_completion.d/" "xml/" "pcmcia/" "crontab" "sane.d/" "wgetrc" "environment" "sysctl.d/" "nsswitch.conf" "rc4.d/" "groff/" "thermald/" "debian_version" "gai.conf" "acpi/" "magic" "subuid" "default/" "python3/" "rsyslog.conf" "libnl-3/" "icedtea-web/" "firefox/" "sudoers" "deluser.conf" "vdpau_wrapper.cfg" "dhcp/" "magic.mime" "NetworkManager/" "issue.net" "console-setup/" "munge/" "brltty.conf" "apache2/" "samba/" "kerneloops.conf" "shadow-" "udisks2/" "systemd/" "kernel/" "timezone" "ltrace.conf" "mono/" "ppp/" "mtab" "locale.alias" "locale.gen" "dbus-1/" "java-7-openjdk/" "lightdm/" "emacs24/" "fuse.conf" "issue" "apparmor.d/" "insserv.conf" "ucf.conf" "brlapi.key" "sound/" "mercurial/" "skel/" "python2.7/" "gnome/" "apparmor/" "ldap/" "subgid-" "perl/" "tmpfiles.d/" "securetty" "postgresql-common/" "xul-ext/" "popularity-contest.conf" "ld.so.conf" "signond.conf" "vim/" "dpkg/" "openal/" "resolv.conf" "python3.5/" "ImageMagick/" "logrotate.d/" "anacrontab" "fwupd.conf" "pam.conf" "modules-load.d/" "thunderbird/" "obex-data-server/" "alternatives/" "odbcinst.ini" "signon-ui/" "profile" "pulse/" "python/" "localtime" "mke2fs.conf" "mtools.conf" "brltty/" ".java/" "pki/" "vtrgb" "bluetooth/" "nanorc" "udev/" "init.d/" "doc-base/" "docker/" "UPower/" "ODBCDataSources/" "rc6.d/" "libpaper.d/" "rc0.d/" "networks" "matplotlibrc" "subgid" "pnm2ppa.conf" "lighttpd/" "../" "./")
-
- ("/home/kurt/Development/" (22736 14761 660865 734000) "emacs.d/" "../" "test.js" "celery-sandbox/" "celery/" "data_refinery/" "./" "useful_commands/" "#test.js#" "prototyping/")
 
  ("/home/kurt/Development/bioinformatics_mill/foreman/bioinformatics_mill_foreman/surveyor/" (22736 12358 127875 545000) "#external_source.py#" "../" "__init__.py" "array_express_surveyor.py" "external_source.py" "./" "surveyor.py" "management/")
 
@@ -185,8 +233,6 @@
  ("/home/kurt/Development/prototyping/agent/" (22721 46694 182602 438000) "../" "downloader.pyc" "downloader.py" "Dockerfile" "./")
 
  ("/home/kurt/Development/emacs.d/auto-save-list/" (22717 51053 693278 220000) "../" "./" ".saves-18984-moss-greenelab~")
-
- ("/home/kurt/Downloads/" (22717 52245 312271 462000) "../" "slack-desktop-2.5.1-amd64.deb" "Data Refinery System Design (1).png" "virtualbox-5.1_5.1.14-112924-Ubuntu-xenial_amd64.deb" "Data Refinery System Design.png" "ipfs-p2p-file-system.pdf" "./")
 
  ("/home/kurt/Development/celery-sandbox/" (22717 46868 558352 67000) "test_task.pyc" "../" "test_task.py" "./")
 
