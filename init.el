@@ -83,8 +83,11 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-(elpy-use-ipython)
-(setq python-shell-interpreter "ipython2" python-shell-interpreter-args "--simple-prompt --pprint")
+;; (elpy-use-ipython "ipython3")
+
+(setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
+(setq elpy-rpc-python-command "python3")
+
 
 (defun unbind-yas-snippet ()
   (local-set-key (kbd "<tab>") 'indent-for-tab-command))
