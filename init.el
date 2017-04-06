@@ -83,10 +83,14 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-;; (elpy-use-ipython "ipython3")
+;; These may not work once I run more of elpy's test commands
+(setq elpy-test-django-with-manage t)
+(setq elpy-test-django-runner-manage-command '("run_tests.sh"))
+
+(setq compilation-scroll-output 'first-error)
 
 (setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
-(setq elpy-rpc-python-command "python3")
+(setq elpy-rpc-python-command "python3.5")
 
 
 (defun unbind-yas-snippet ()
