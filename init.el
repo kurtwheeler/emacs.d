@@ -161,6 +161,11 @@
 (global-linum-mode 1)
 
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
+(setq fiplr-ignored-globs
+      '((directories
+         (".git" ".svn" ".hg" ".bzr" "dr_env"))
+        (files
+         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip"))))
 
 (require 'anzu)
 (global-anzu-mode 1)
