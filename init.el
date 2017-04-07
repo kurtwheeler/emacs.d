@@ -83,8 +83,13 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+
 (elpy-use-ipython)
 (setq python-shell-interpreter "ipython2" python-shell-interpreter-args "--simple-prompt --pprint")
+
+;; Setting this to nil causes indentation to happen line-by-line
+(add-hook 'elpy-mode-hook
+          (lambda () (setq indent-region-function nil)))
 
 (defun unbind-yas-snippet ()
   (local-set-key (kbd "<tab>") 'indent-for-tab-command))
