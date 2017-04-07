@@ -92,6 +92,9 @@
 (setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
 (setq elpy-rpc-python-command "python3.5")
 
+;; Setting this to nil causes indentation to happen line-by-line
+(add-hook 'elpy-mode-hook
+          (lambda () (setq indent-region-function nil)))
 
 (defun unbind-yas-snippet ()
   (local-set-key (kbd "<tab>") 'indent-for-tab-command))
