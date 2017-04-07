@@ -87,6 +87,8 @@
 (setq elpy-test-django-with-manage t)
 (setq elpy-test-django-runner-manage-command '("run_tests.sh"))
 
+(elpy-set-test-runner 'elpy-test-django-runner)
+
 (setq compilation-scroll-output 'first-error)
 
 (setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
