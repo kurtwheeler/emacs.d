@@ -98,6 +98,18 @@
 (add-hook 'elpy-mode-hook
           (lambda () (setq indent-region-function nil)))
 
+(defun with-python-root-dir (orig-fun &rest args)
+  (message "Hello world?")
+  (let ((old-dir (default-directory))
+        (dummy (cd (elpy-project-root)))
+        (dummy2 (message "default dir is %S" default-directory))
+        (res (apply orig-fun args)))
+    (cd old-dir)
+    res))
+
+;; (advice-add 'with-python-root-dir :around #'elpy-test-django-runner)
+(advice-add 'with-python-root-dir :around #'elpy-library-root)
+
 ;; C
 (setq-default c-basic-offset 4)
 (c-set-offset 'case-label '+)
