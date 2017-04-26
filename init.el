@@ -26,6 +26,11 @@
 
 ;; My changes:
 
+(add-to-list 'load-path "~/.emacs.d/deps")
+(require 'column-marker)
+(column-marker-3 80)
+
+
 (defun whack-whitespace (arg)
       "Delete all white space from point to the next word.  With prefix ARG
     delete across newlines as well.  The only danger in this is that you
@@ -134,15 +139,9 @@
 (add-hook 'php-mode-hook 'php-tabs)
 
 ;; R
-;; (setq ess-fancy-comments nil)
-(defun r-comments ()
-  (setq ess-fancy-comments nil))
-
-(add-hook 'ess-mode-hook (setq ess-fancy-comments nil))
+(add-hook 'ess-mode-hook
+          (lambda () (setq ess-fancy-comments nil)))
 (setq ess-default-style 'DEFAULT)
-
-(require 'column-marker)
-(column-marker-3 80)
 
 
 (defun toggle-comment-on-line ()

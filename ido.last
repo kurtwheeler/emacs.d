@@ -22,7 +22,7 @@
  ("/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/surveyor/" . "__pycache__/")
  ("/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/" . "surveyor/")
  ("/home/kurt/Development/data_refinery/foreman/" . "data_refinery_foreman/")
- ("/home/kurt/Development/data_refinery/workers/" . "data_refinery_workers/")
+ ("/home/kurt/Development/data_refinery/workers/" . "r_processors/")
  ("/home/kurt/Development/data_refinery/data_models/data_refinery_models/" . "migrations/")
  ("/home/kurt/Development/data_refinery/data_models/" . "data_refinery_models/")
  ("/home/kurt/Development/data_refinery/" . "workers/")
@@ -51,10 +51,11 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/kurt/Development/data_refinery/workers/r_processors/"
+ "/home/kurt/Development/data_refinery/workers/"
  "/home/kurt/Development/data_refinery/workers/data_refinery_workers/downloaders/management/commands/"
  "/home/kurt/Development/bioconda-recipes/recipes/bioconductor-org.dr.eg.db/"
  "/home/kurt/Development/bioconda-recipes/recipes/bioconductor-org.ss.eg.db/"
- "/home/kurt/Development/data_refinery/workers/"
  "/home/kurt/Development/data_refinery/workers/data_refinery_workers/downloaders/"
  "/home/kurt/Development/data_refinery/foreman/data_refinery_foreman/surveyor/"
  "/home/kurt/Development/data_refinery/foreman/"
@@ -100,11 +101,12 @@
  "/home/kurt/Development/bioinformatics_mill/"
  "/home/kurt/Development/bioinformatics_mill/foreman/environments/"
  "/home/kurt/Development/bioinformatics_mill/data_models/bioinformatics_mill_models/"
- "/home/kurt/Development/bioinformatics_mill/foreman/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "process_cel_to_pcl.R"
+ "README.md"
  "queue_test_task.py"
  "meta.yaml"
  "build.sh"
@@ -113,12 +115,16 @@
  "utils.py"
  "array_express.py"
  "run_surveyor.sh"
- "run_shell.sh"
- "Dockerfile.worker"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/kurt/Development/data_refinery/workers/r_processors/" (22784 64586 312824 808000) "../" "process_cel_to_pcl.R" "./")
+
+ ("/home/kurt/Development/data_refinery/workers/" (22784 64154 123946 45000) "README.md" "environment.yml" "../" "volume/" "environments/" "data_refinery_workers.egg-info/" "setup.py" "worker.sh" "r_processors/" "data_refinery_workers/" "Dockerfile" "./" "tester.sh" "manage.py" "dist/")
+
+ ("/home/kurt/Development/data_refinery/" (22784 64541 661976 549000) "README.md" "foreman/" "terraform/" "data_models/" "requirements.in" ".git/" ".gitignore" "../" "volume/" "dr_env/" "requirements.txt" ".dockerignore" "run_shell.sh" "workers/" "./" "install.sh" "LICENSE")
+
  ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/downloaders/management/commands/" (22783 39138 956740 134000) "../" "queue_test_task.py" "./")
 
  ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/downloaders/management/" (22783 39138 956740 134000) "../" "commands/" "./")
@@ -126,10 +132,6 @@
  ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/downloaders/" (22783 39138 956740 134000) "../" "__init__.py" "__init__.pyc" "utils.py" "array_express.py" "./" "management/")
 
  ("/home/kurt/Development/data_refinery/workers/data_refinery_workers/" (22783 39138 956740 134000) "../" "__init__.py" "wsgi.py" "urls.py" "task_runner.py" "processors/" "settings.py" "./" "downloaders/")
-
- ("/home/kurt/Development/data_refinery/workers/" (22783 39138 956740 134000) "README.md" "requirements.in" "../" "volume/" "environments/" "data_refinery_workers.egg-info/" "requirements.txt" "setup.py" "data_refinery_workers/" "Dockerfile" "run_tester.sh" "./" "run_worker.sh" "manage.py" "dist/")
-
- ("/home/kurt/Development/data_refinery/" (22783 39138 956740 134000) "README.md" "foreman/" "terraform/" "data_models/" "requirements.in" ".git/" ".gitignore" "../" "volume/" "dr_env/" "requirements.txt" "run_shell.sh" "workers/" "./" "install.sh" "LICENSE")
 
  ("/home/kurt/Development/bioconda-recipes/recipes/bioconductor-org.rn.eg.db/" (22783 39000 996362 191000) "../" "meta.yaml" "build.sh" "./")
 
@@ -316,8 +318,6 @@
  ("/home/kurt/Development/prototyping/django_app/migrations/" (22722 65411 78387 295000) "../" "__init__.py" "./")
 
  ("/home/kurt/Development/prototyping/agent/" (22721 46694 182602 438000) "../" "downloader.pyc" "downloader.py" "Dockerfile" "./")
-
- ("/home/kurt/Development/celery-sandbox/" (22717 46868 558352 67000) "test_task.pyc" "../" "test_task.py" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----
