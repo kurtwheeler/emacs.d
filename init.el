@@ -87,6 +87,10 @@
 (setq elpy-test-django-with-manage t)
 (setq elpy-test-django-runner-manage-command '("run_tests.sh"))
 
+;; Temporary fix until https://github.com/jorgenschaefer/elpy/issues/1117
+;; is resolved.
+(setq elpy-test-django-runner-command '("/home/kurt/Development/data_refinery/foreman/run_tests.sh"))
+
 (elpy-set-test-runner 'elpy-test-django-runner)
 
 (setq compilation-scroll-output 'first-error)
@@ -129,6 +133,18 @@
 
 (add-hook 'php-mode-hook 'php-tabs)
 
+;; R
+;; (setq ess-fancy-comments nil)
+(defun r-comments ()
+  (setq ess-fancy-comments nil))
+
+(add-hook 'ess-mode-hook (setq ess-fancy-comments nil))
+(setq ess-default-style 'DEFAULT)
+
+(require 'column-marker)
+(column-marker-3 80)
+
+
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
   (interactive)
@@ -153,6 +169,7 @@
 (global-set-key (kbd "C-<insert>") 'yank)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 (global-set-key (kbd "M-T") 'transpose-sexps)
+(global-set-key (kbd "C-S-w") 'delete-region)
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
@@ -242,3 +259,4 @@
  do
  (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
    (cl-callf color-saturate-name (face-foreground face) 30)))
+(put 'upcase-region 'disabled nil)
