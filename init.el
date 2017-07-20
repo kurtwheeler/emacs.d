@@ -86,6 +86,7 @@
 (elpy-enable)
 
 (require 'py-autopep8)
+(setq py-autopep8-options '("--max-line-length=100"))
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; These may not work once I run more of elpy's test commands
@@ -94,7 +95,7 @@
 
 ;; Temporary fix until https://github.com/jorgenschaefer/elpy/issues/1117
 ;; is resolved.
-(setq elpy-test-django-runner-command '("/home/kurt/Development/data_refinery/foreman/run_tests.sh"))
+;; (setq elpy-test-django-runner-command '("/home/kurt/Development/data_refinery/foreman/run_tests.sh"))
 
 (elpy-set-test-runner 'elpy-test-django-runner)
 
@@ -172,7 +173,9 @@
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-t"))
 (global-unset-key (kbd "C-_"))
+(global-set-key (kbd "<insert>") 'ignore)
 
 (global-linum-mode 1)
 
@@ -234,13 +237,16 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
+ '(elpy-company-post-completion-function (quote ignore))
  '(elpy-modules
    (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-django elpy-module-sane-defaults)))
+    (elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-django elpy-module-sane-defaults)))
  '(hippie-expand-try-functions-list
    (quote
     (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-line try-expand-list)))
- '(tab-stop-list (quote (4 8 12))))
+ '(python-fill-docstring-style (quote pep-257-nn))
+ '(tab-stop-list (quote (4 8 12)))
+ '(yaml-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
