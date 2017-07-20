@@ -159,6 +159,12 @@
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
 
+(defadvice hippie-expand (around hippie-expand-case-fold)
+  "Try to do case-sensitive matching (not effective with all functions)."
+  (let ((case-fold-search nil))
+    ad-do-it))
+(ad-activate 'hippie-expand)
+
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
