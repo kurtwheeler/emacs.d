@@ -26,6 +26,14 @@
 
 ;; My changes:
 
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message nil)
+
+(add-to-list 'load-path "~/.emacs.d/deps")
+(require 'column-marker)
+(column-marker-3 80)
+
+
 (defun whack-whitespace (arg)
       "Delete all white space from point to the next word.  With prefix ARG
     delete across newlines as well.  The only danger in this is that you
@@ -81,20 +89,23 @@
 (elpy-enable)
 
 (require 'py-autopep8)
+(setq py-autopep8-options '("--max-line-length=100"))
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+;; These may not work once I run more of elpy's test commands
+(setq elpy-test-django-with-manage t)
+(setq elpy-test-django-runner-manage-command '("run_tests.sh"))
 
-(elpy-use-ipython)
-(setq python-shell-interpreter "ipython2" python-shell-interpreter-args "--simple-prompt --pprint")
+(elpy-set-test-runner 'elpy-test-django-runner)
+
+(setq compilation-scroll-output 'first-error)
+
+(setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
+(setq elpy-rpc-python-command "python3.5")
 
 ;; Setting this to nil causes indentation to happen line-by-line
 (add-hook 'elpy-mode-hook
           (lambda () (setq indent-region-function nil)))
-
-(defun unbind-yas-snippet ()
-  (local-set-key (kbd "<tab>") 'indent-for-tab-command))
-
-(add-hook 'elpy-mode-hook 'unbind-yas-snippet)
 
 ;; C
 (setq-default c-basic-offset 4)
@@ -127,6 +138,12 @@
 
 (add-hook 'php-mode-hook 'php-tabs)
 
+;; R
+(add-hook 'ess-mode-hook
+          (lambda () (setq ess-fancy-comments nil)))
+(setq ess-default-style 'DEFAULT)
+
+
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
   (interactive)
@@ -141,6 +158,12 @@
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
 
+(defadvice hippie-expand (around hippie-expand-case-fold)
+  "Try to do case-sensitive matching (not effective with all functions)."
+  (let ((case-fold-search nil))
+    ad-do-it))
+(ad-activate 'hippie-expand)
+
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -151,14 +174,22 @@
 (global-set-key (kbd "C-<insert>") 'yank)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 (global-set-key (kbd "M-T") 'transpose-sexps)
+(global-set-key (kbd "C-S-w") 'delete-region)
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-t"))
 (global-unset-key (kbd "C-_"))
+(global-set-key (kbd "<insert>") 'ignore)
 
 (global-linum-mode 1)
 
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
+(setq fiplr-ignored-globs
+      '((directories
+         (".git" ".svn" ".hg" ".bzr" "dr_env"))
+        (files
+         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip"))))
 
 (require 'anzu)
 (global-anzu-mode 1)
@@ -191,16 +222,6 @@
 (setq cider-repl-pop-to-buffer-on-connect nil)
 (setq cider-prompt-save-file-on-load nil)
 
-;; Doesn't seem to work, this sorcery is obnoxious.
-;; (defun reset-cider-output-streams ()
-;;   (cider-nrepl-request:eval
-;;    "(do
-;;       (require '[cider.nrepl.middleware.out])
-;;       (alter-var-root #'*out* (constantly cider.nrepl.middleware.out/original-out)))"
-;;    (lambda (_response) nil)))
-
-;; (add-hook 'cider-mode-hook 'reset-cider-output-streams)
-
 ;; Modifications made by Custom
 
 (custom-set-variables
@@ -208,9 +229,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
- '(hippie-expand-try-functions-list (quote (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-line try-expand-list))))
+ '(elpy-company-post-completion-function (quote ignore))
+ '(elpy-modules
+   (quote
+    (elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-django elpy-module-sane-defaults)))
+ '(hippie-expand-try-functions-list
+   (quote
+    (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-line try-expand-list)))
+ '(python-fill-docstring-style (quote pep-257-nn))
+ '(tab-stop-list (quote (4 8 12)))
+ '(yaml-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -228,3 +259,4 @@
  do
  (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
    (cl-callf color-saturate-name (face-foreground face) 30)))
+(put 'upcase-region 'disabled nil)
