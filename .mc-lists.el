@@ -4,7 +4,18 @@
 (setq mc/cmds-to-run-for-all
       '(
         better-beginning-of-line
+        ess-indent-or-complete
+        ess-smart-comma
+        indent-for-tab-command
+        kill-region
+        paredit-backward-kill-word
+        paredit-forward-delete
+        paredit-forward-kill-word
+        paredit-kill
         python-indent-dedent-line-backspace
+        whack-whitespace
+        yaml-electric-backspace
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once

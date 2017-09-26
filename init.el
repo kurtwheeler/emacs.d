@@ -26,6 +26,9 @@
 
 ;; My changes:
 
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message nil)
+
 (add-to-list 'load-path "~/.emacs.d/deps")
 (require 'column-marker)
 (column-marker-3 80)
@@ -92,10 +95,6 @@
 ;; These may not work once I run more of elpy's test commands
 (setq elpy-test-django-with-manage t)
 (setq elpy-test-django-runner-manage-command '("run_tests.sh"))
-
-;; Temporary fix until https://github.com/jorgenschaefer/elpy/issues/1117
-;; is resolved.
-;; (setq elpy-test-django-runner-command '("/home/kurt/Development/data_refinery/foreman/run_tests.sh"))
 
 (elpy-set-test-runner 'elpy-test-django-runner)
 
@@ -222,16 +221,6 @@
 (setq column-number-mode t)
 (setq cider-repl-pop-to-buffer-on-connect nil)
 (setq cider-prompt-save-file-on-load nil)
-
-;; Doesn't seem to work, this sorcery is obnoxious.
-;; (defun reset-cider-output-streams ()
-;;   (cider-nrepl-request:eval
-;;    "(do
-;;       (require '[cider.nrepl.middleware.out])
-;;       (alter-var-root #'*out* (constantly cider.nrepl.middleware.out/original-out)))"
-;;    (lambda (_response) nil)))
-
-;; (add-hook 'cider-mode-hook 'reset-cider-output-streams)
 
 ;; Modifications made by Custom
 
