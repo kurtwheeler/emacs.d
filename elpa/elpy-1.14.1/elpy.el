@@ -6,7 +6,7 @@
 ;; URL: https://github.com/jorgenschaefer/elpy
 ;; Version: 1.14.1
 ;; Keywords: Python, IDE, Languages, Tools
-;; Package-Requires: ((company "0.8.2") (find-file-in-project "3.3")  (highlight-indentation "0.5.0") (pyvenv "1.3") (yasnippet "0.8.0") (s "1.10.0"))
+;; Package-Requires: ((company "0.9.2") (find-file-in-project "3.3")  (highlight-indentation "0.5.0") (pyvenv "1.3") (yasnippet "0.8.0") (s "1.11.0"))
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -45,6 +45,7 @@
 
 (require 'elpy-refactor)
 (require 'elpy-django)
+(require 'elpy-profile)
 (require 'pyvenv)
 
 (defconst elpy-version "1.14.1"
@@ -1735,6 +1736,9 @@ If ASK-FOR-EACH-ONE is non-nil, ask before killing each python process.
         (indent-rigidly (point-min)
                         (point-max)
                         (- indent-level))
+        ;; 'indent-rigidly' introduces tabs despite the fact that 'indent-tabs-mode' is nil
+        ;; 'untabify' fix that
+	(untabify (point-min) (point-max))
         (buffer-string)))))
 
 ;;;;;;;;;;;;;;;;;
@@ -1884,15 +1888,21 @@ indentation levels."
 
 (defun elpy-nav-move-line-or-region-down (&optional beg end)
   "Move the current line or active region down."
-  (interactive "r")
-  (if (use-region-p)
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list nil nil)))
+  (if beg
       (elpy--nav-move-region-vertically beg end 1)
     (elpy--nav-move-line-vertically 1)))
 
 (defun elpy-nav-move-line-or-region-up (&optional beg end)
   "Move the current line or active region down."
-  (interactive "r")
-  (if (use-region-p)
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list nil nil)))
+  (if beg
       (elpy--nav-move-region-vertically beg end -1)
     (elpy--nav-move-line-vertically -1)))
 
@@ -2153,7 +2163,17 @@ This requires Django 1.6 or the django-discover-runner package."
                       module))))
     (apply #'elpy-test-run
            top
-           elpy-test-django-runner-command)))
+           (append
+            (if elpy-test-django-with-manage
+                (append (list (concat (expand-file-name
+                                       (locate-dominating-file
+                                        (if (elpy-project-root)
+                                            (elpy-project-root)
+                                          ".")
+                                        (car elpy-test-django-runner-manage-command)))
+                                      (car elpy-test-django-runner-manage-command)))
+                        (cdr elpy-test-django-runner-manage-command))
+              elpy-test-django-runner-command)))))
 (put 'elpy-test-django-runner 'elpy-test-runner-p t)
 
 (defun elpy-test-nose-runner (top file module test)
@@ -2356,7 +2376,7 @@ Also sort the imports in the import statement blocks."
         (let* ((prompt (format "How to import \"%s\": " object))
                (choice (elpy-importmagic--add-import-read-args object prompt nil)))
 	  (when (equal choice "")
-	    (add-to-list 'unresolved-aliases (car (split-string object "\\."))))
+	    (push (car (split-string object "\\.")) unresolved-aliases))
 	  (elpy-importmagic-add-import choice nil))))
     ;; ask for unresolved aliases real names and add import for them
     (dolist (alias unresolved-aliases)
@@ -3397,7 +3417,13 @@ If you need your modeline, you can set the variable `elpy-remove-modeline-lighte
                       (delq 'company-ropemacs
                             (delq 'company-capf
                                   (mapcar #'identity company-backends))))))
-     (company-mode 1))
+     (company-mode 1)
+     (when (> (buffer-size) elpy-rpc-ignored-buffer-size)
+       (message
+	(format
+	 (concat "Buffer larger than elpy-rpc-ignored-buffer-size (%d)."
+		 " Elpy will turn off completion.")
+	 elpy-rpc-ignored-buffer-size))))
     (`buffer-stop
      (company-mode -1)
      (kill-local-variable 'company-idle-delay)
@@ -3438,8 +3464,8 @@ here, and return the \"name\" as used by the backend."
   "Store RESULT in the candidate cache and return candidates."
   (elpy-company--cache-clear)
   (mapcar (lambda (completion)
-            (let* ((suffix (cdr (assq 'suffix completion)))
-                   (name (concat prefix suffix)))
+            (let* ((suffix (cdr (assq 'name completion)))
+                   (name (concat (s-chop-suffix (company-grab-symbol) prefix) suffix)))
               (puthash name completion elpy-company--cache)
               name))
           result))
@@ -3950,6 +3976,16 @@ which we're looking."
            highlight-indent-active)
       (highlight-indentation)))))
 
+;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25753#44
+(when (version< emacs-version "25.2")
+  (defun python-shell-completion-native-try ()
+    "Return non-nil if can trigger native completion."
+    (let ((python-shell-completion-native-enable t)
+          (python-shell-completion-native-output-timeout
+           python-shell-completion-native-try-output-timeout))
+      (python-shell-completion-native-get-completions
+       (get-buffer-process (current-buffer))
+       nil "_"))))
 
 (provide 'elpy)
 ;;; elpy.el ends here
