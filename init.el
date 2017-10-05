@@ -82,6 +82,24 @@
   (global-set-key (kbd "C-<right>") 'right-word)
   (global-set-key (kbd "C-<left>") 'left-word))
 
+(defun delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument ARG, do this that many times. Based on simple.el's
+kill-word, but I changed it to use delete-region instead."
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+
+(defun backward-delete-word (arg)
+  "Delete characters backward until encountering the beginning of a word.
+With argument ARG, do this that many times. Based on simple.el's
+backward-kill-word, but I changed it to use delete-region instead."
+  (interactive "p")
+  (delete-word (- arg)))
+
+(global-set-key (kbd "C-<DEL>") 'backward-delete-word)
+(global-set-key (kbd "M-<DEL>") 'backward-delete-word)
+(global-set-key (kbd "M-d") 'delete-word)
+
 (add-hook 'paredit-mode-hook 'unbind-movement)
 
 ;; Python
