@@ -87,7 +87,7 @@
 With argument ARG, do this that many times. Based on simple.el's
 kill-word, but I changed it to use delete-region instead."
   (interactive "p")
-  (delete-region (point) (progn (forward-word arg) (point))))
+  (delete-region (point) (progn (subword-forward arg) (point))))
 
 (defun backward-delete-word (arg)
   "Delete characters backward until encountering the beginning of a word.
@@ -175,6 +175,40 @@ backward-kill-word, but I changed it to use delete-region instead."
       (comment-or-uncomment-region region-line-start region-line-end))
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
+(require 'paredit)
+(defun paredit-forward-slurp-sexp-comment (&optional argument)
+  "Add the S-expression following the current list into that list
+  by moving the closing delimiter.
+Automatically reindent the newly slurped S-expression with respect to
+  its new enclosing form.
+If in a string, move the opening double-quote forward by one
+  S-expression and escape any intervening characters as necessary,
+  without altering any indentation or formatting.
+Modified from the original function to not disable functionality
+  in commments."
+  (interactive "P")
+  (paredit-in-comment-p)
+  (save-excursion
+    (cond ((numberp argument)
+           (if (< argument 0)
+               (paredit-forward-barf-sexp (- 0 argument))
+               (while (< 0 argument)
+                 (paredit-forward-slurp-sexp)
+                 (setq argument (- argument 1)))))
+          ((paredit-in-string-p)
+           ;; If there is anything to slurp into the string, take that.
+           ;; Otherwise, try to slurp into the enclosing list.
+           (if (save-excursion
+                 (goto-char (paredit-enclosing-string-end))
+                 (paredit-handle-sexp-errors (progn (forward-sexp) nil)
+                   t))
+               (progn
+                 (goto-char (paredit-enclosing-string-end))
+                 (paredit-forward-slurp-into-list argument))
+               (paredit-forward-slurp-into-string argument)))
+          (t
+           (paredit-forward-slurp-into-list argument)))))
+
 
 (defadvice hippie-expand (around hippie-expand-case-fold)
   "Try to do case-sensitive matching (not effective with all functions)."
@@ -185,7 +219,6 @@ backward-kill-word, but I changed it to use delete-region instead."
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-
 (global-set-key (kbd "C-h") 'ace-window)
 (global-set-key (kbd "C-c b") 'join-line)
 (global-set-key (kbd "C-o") 'avy-goto-word-or-subword-1)
@@ -193,6 +226,7 @@ backward-kill-word, but I changed it to use delete-region instead."
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 (global-set-key (kbd "M-T") 'transpose-sexps)
 (global-set-key (kbd "C-S-w") 'delete-region)
+(global-set-key (kbd "C-)") 'paredit-forward-slurp-sexp-comment)
 
 (global-unset-key (kbd "ESC ESC ESC"))
 (global-unset-key (kbd "C-z"))
@@ -217,6 +251,13 @@ backward-kill-word, but I changed it to use delete-region instead."
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'electric-pair-mode)
+
+
+(define-globalized-minor-mode my-global-subword-mode subword-mode
+  (lambda () (subword-mode 1)))
+
+(my-global-subword-mode 1)
 
 ;; Overwrite go to beginning of line:
 (defun better-beginning-of-line ()
@@ -250,6 +291,8 @@ backward-kill-word, but I changed it to use delete-region instead."
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
+ '(electric-pair-mode t)
+ '(electric-pair-text-pairs nil)
  '(elpy-company-post-completion-function (quote ignore))
  '(elpy-modules
    (quote
@@ -265,7 +308,7 @@ backward-kill-word, but I changed it to use delete-region instead."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(trailing-whitespace ((t (:background "midnight blue")))))
 
 ;; Customizing rainbow-delimiters:
 

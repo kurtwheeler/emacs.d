@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-delete-word
         better-beginning-of-line
         ess-indent-or-complete
         ess-smart-comma
