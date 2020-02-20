@@ -5,15 +5,22 @@
       '(
         backward-delete-word
         better-beginning-of-line
+        delete-word
+        electric-newline-and-maybe-indent
+        elpy-nav-indent-shift-right
         ess-indent-or-complete
         ess-smart-comma
         indent-for-tab-command
+        isearch-forward-regexp
+        isearch-printing-char
         kill-region
         paredit-backward-kill-word
         paredit-forward-delete
         paredit-forward-kill-word
+        paredit-forward-slurp-sexp-comment
         paredit-kill
         python-indent-dedent-line-backspace
+        upcase-region
         whack-whitespace
         yaml-electric-backspace
         yaml-electric-dash-and-dot
@@ -21,4 +28,5 @@
 
 (setq mc/cmds-to-run-once
       '(
+        mouse-set-region
         ))

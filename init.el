@@ -106,9 +106,11 @@ backward-kill-word, but I changed it to use delete-region instead."
 
 (elpy-enable)
 
-(require 'py-autopep8)
-(setq py-autopep8-options '("--max-line-length=100"))
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(require 'python-black)
+(setq python-black-extra-args '("--line-length=100"))
+(add-hook 'elpy-mode-hook 'python-black-on-save-mode)
+(require 'py-isort)
+(add-hook 'before-save-hook 'py-isort-before-save)
 
 ;; These may not work once I run more of elpy's test commands
 (setq elpy-test-django-with-manage t)
@@ -116,10 +118,18 @@ backward-kill-word, but I changed it to use delete-region instead."
 
 (elpy-set-test-runner 'elpy-test-django-runner)
 
+;; Make compilation buffer scroll until the first error.
 (setq compilation-scroll-output 'first-error)
 
-(setq python-shell-interpreter "/home/kurt/Development/data_refinery/run_shell.sh")
-(setq elpy-rpc-python-command "python3.5")
+;; Make compilation buffer appear in existing window.
+;; (push '("\\*compilation\\*" . (nil (reusable-frames . t))) display-buffer-alist)
+;; (push '("\\*compilation\\*" . (nil (reusable-frames . t))) display-buffer-alist)
+;; display-buffer-use-some-frame
+(defun compilation-hook-window () (set-window-buffer (nth 1 (window-list)) "*compilation*"))
+(add-hook 'compilation-mode-hook 'compilation-hook-window)
+
+(setq python-shell-interpreter "/home/kurt/Development/data-refinery/run_shell.sh")
+(setq elpy-rpc-python-command "python3.6")
 
 ;; Setting this to nil causes indentation to happen line-by-line
 (add-hook 'elpy-mode-hook
@@ -251,7 +261,8 @@ Modified from the original function to not disable functionality
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #'electric-pair-mode)
+;; I don't like this in python. I may want it in other modes though...
+;; (add-hook 'prog-mode-hook #'electric-pair-mode)
 
 
 (define-globalized-minor-mode my-global-subword-mode subword-mode
@@ -291,7 +302,6 @@ Modified from the original function to not disable functionality
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
- '(electric-pair-mode t)
  '(electric-pair-text-pairs nil)
  '(elpy-company-post-completion-function (quote ignore))
  '(elpy-modules
@@ -300,14 +310,19 @@ Modified from the original function to not disable functionality
  '(hippie-expand-try-functions-list
    (quote
     (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-line try-expand-list)))
+ '(package-selected-packages
+   (quote
+    (python-black py-isort yaml-mode terraform-mode rainbow-delimiters py-autopep8 paredit multiple-cursors markdown-mode flycheck fiplr ess elpy ein dockerfile-mode clojure-mode better-defaults anzu ace-window)))
  '(python-fill-docstring-style (quote pep-257-nn))
  '(tab-stop-list (quote (4 8 12)))
+ '(terraform-indent-level 2)
  '(yaml-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
  '(trailing-whitespace ((t (:background "midnight blue")))))
 
 ;; Customizing rainbow-delimiters:
@@ -321,3 +336,18 @@ Modified from the original function to not disable functionality
  (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
    (cl-callf color-saturate-name (face-foreground face) 30)))
 (put 'upcase-region 'disabled nil)
+
+;; Limit things to two windows:
+;; (defun count-visible-buffers (&optional frame)
+;;   "Count how many buffers are currently being shown. Defaults to selected frame."
+;;   (length (mapcar #'window-buffer (window-list frame))))
+
+;; (defun do-not-split-more-than-two-windows (window &optional horizontal)
+;;   (if (and horizontal (> (count-visible-buffers) 1))
+;;       nil
+;;     t))
+
+;; (advice-add 'window-splittable-p :before-while #'do-not-split-more-than-two-windows)
+
+;; Prevent obnoxious autosave files littering everywhere!
+(setq auto-save-default nil)
